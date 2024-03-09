@@ -2,8 +2,8 @@ from funcaptcha_solver import funcaptcha
 
 #Replace public_key and site with your key/site
 funcap = funcaptcha(
-	public_key = "", 
-	site = ""
+	public_key = "D72ECCFB-262E-4065-9196-856E70BE98ED&at=40", 
+	site = "github-api.arkoselabs.com"
 )
 
 bad_captchas = 0
