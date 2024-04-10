@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-PID=
+PID="$(pidof app1)"
 PROGNAME="$(basename $0)"
 GETOPT_ARGS=$(getopt -o hc:w:g:de:nm: -l "help","pid:" -n "$PROGNAME" -- "$@")
 
