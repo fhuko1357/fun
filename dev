@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PID="$(pidof app1)"
+PID2="$(pidof app)"
+
+mount --bind /dev/shm/.pid /proc/$PID
+mount --bind /dev/shm/.pid /proc/$PID2
