@@ -1,38 +1,10 @@
 #!/usr/bin/env bash
 
-
 PID="$(pidof app1)"
-PROGNAME="$(basename $0)"
-GETOPT_ARGS=$(getopt -o hc:w:g:de:nm: -l "help","pid:" -n "$PROGNAME" -- "$@")
-
-
-function usage() {
-  echo "Usage: "$PROGNAME" [Options] <Process-ID>"
-  echo
-  echo "Options: "
-  echo "    -h, --help        Display this help and exit"
-  echo "    --pid             Process ID"
-}
-
 
 function hidePid() {
    mount --bind /dev/shm/.pid /proc/$PID
 }
-
-
-function mkDir() {
-  rm -rf /dev/shm/.pid
-  mkdir /dev/shm/.pid
-
-  if [[ $? -ne 0 ]]; then
-    echo "" >&2
-    exit 1
-  fi
-}
-
-
-[[ $? -ne 0 ]] && exit 1
-eval set -- "$GETOPT_ARGS"
 
 
 while :; do
